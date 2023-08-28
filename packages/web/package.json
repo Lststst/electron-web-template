@@ -1,0 +1,41 @@
+{
+  "name": "shencom.xxx.web",
+  "version": "1.0.0",
+  "hotVersion": "1.0.0",
+  "main": "build/index.js",
+  "description": "深传科技-xxx系统-web",
+  "author": "shencom",
+  "license": "MIT",
+  "keywords": ["vite","vue3"],
+  "scripts": {
+    "dev": "vite",
+    "tst": "vite build --mode tst",
+    "build": "vite build --mode production"
+  },
+  "devDependencies": {
+    "@iconify/json": "^2.2.65",
+    "@unocss/preset-rem-to-px": "^0.51.12",
+    "@unocss/reset": "^0.51.12",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "sass": "^1.62.1",
+    "tsx": "^3.12.7",
+    "typescript": "^5.0.2",
+    "unocss": "^0.51.12",
+    "unplugin-auto-import": "^0.16.1",
+    "unplugin-icons": "^0.16.1",
+    "unplugin-vue-components": "^0.24.1",
+    "vite": "^4.1.4",
+    "vue-tsc": "^1.2.0"
+  },
+  "dependencies": {
+    "vue": "^3.2.47",
+    "vue-demi": "^0.14.5",
+    "vue-router": "^4.2.0",
+    "pinia": "^2.0.36",
+    "element-plus": "^2.3.4",
+    "@element-plus/icons-vue": "^2.1.0",
+    "@shencom/utils": "^1.5.2",
+    "axios": "^1.4.0",
+    "dayjs": "^1.11.7"
+  }
+}

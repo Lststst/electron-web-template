@@ -1,0 +1,71 @@
+html,
+body {
+  width: 100vw !important;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: rgba(27, 46, 67, 1);
+  #driver-highlighted-element-stage{
+    background: rgba(255, 255, 255, .2)!important;
+    border: 2px solid #3BB3C2;
+  }
+  #driver-popover-item {
+    padding: 6px 10px;
+    .driver-popover-title{
+     font-size: 16px; 
+    }
+    .driver-popover-footer{
+      .driver-close-btn{
+        background-color: transparent;
+        border-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        color: #FF6347;
+        text-decoration: underline;
+        line-height: 14px;
+        font-size: 12px;
+      }
+      .driver-navigation-btns{
+        .driver-prev-btn{
+          display: none!important;
+        }
+        .driver-next-btn{
+          background-color: #3BB3C2;
+          border-width: 0;
+          color: #ffffff;
+          text-shadow: unset;
+          font-size: 12px;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+  .driver-highlighted-element{
+    pointer-events: none;
+  }
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+svg {
+  width: 1em;
+  height: 1em;
+}
+
+// @media (prefers-color-scheme: light) {
+//   /* body { background: #ddd; color: black; } */
+// }

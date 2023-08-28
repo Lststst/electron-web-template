@@ -1,0 +1,39 @@
+{
+  "name": "shencom.xxx.electron",
+  "version": "1.0.0",
+  "hotVersion": "1.0.0",
+  "main": "build/main.js",
+  "description": "深传科技-xxx系统-electron",
+  "author": "shencom",
+  "license": "MIT",
+  "keywords": [
+    "electron",
+    "node"
+  ],
+  "scripts": {
+    "dev": "tsx ./scripts/build.ts -w",
+    "tst": "tsx ./scripts/build.ts --tst && electron-builder build",
+    "build": "tsx ./scripts/build.ts --production && electron-builder build"
+  },
+  "devDependencies": {
+    "@rollup/plugin-replace": "^5.0.2",
+    "chokidar": "^3.5.3",
+    "colors": "^1.4.0",
+    "electron-builder": "^23.6.0",
+    "tree-kill": "^1.2.2",
+    "tsx": "^3.12.7",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.9",
+    "electron": "^21.4.4"
+  },
+  "dependencies": {
+    "@shencom/utils": "^1.5.2",
+    "axios": "^1.4.0",
+    "dayjs": "^1.11.7",
+    "electron-localshortcut": "^3.2.1",
+    "electron-log": "^4.4.8",
+    "electron-store": "^8.1.0",
+    "electron-updater": "^5.3.0",
+    "fs-extra": "^11.1.1"
+  }
+}

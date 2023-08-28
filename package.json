@@ -1,0 +1,18 @@
+{
+  "name": "electronProTemple",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "files": [],
+  "scripts": {
+    "install": "node scripts/install.js",
+    "dev": "node scripts/dev.js",
+    "build": "node scripts/build.js"
+  },
+  "devDependencies": {
+    "colors": "^1.4.0",
+    "portfinder": "^1.0.32",
+    "which": "^3.0.1"
+  },
+  "dependencies": {}
+}

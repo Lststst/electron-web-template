@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "strict": false,
+    "lib": ["es2021"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src/**/*", "scripts/**/*","package.json", "rollup.config.ts","electron-builder-pro.json", "electron-builder.json"],
+  "exclude": ["node_modules/*", "public/*"],
+}
