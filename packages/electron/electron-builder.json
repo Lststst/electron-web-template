@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
-  "appId": "com.electron.shencom.demo",
+  "appId": "com.electron.demo",
   "productName": "深传科技-demo",
   "asar": false,
   "directories": {
@@ -20,7 +20,7 @@
   "compression": "store",
   "mac": {
     "icon": "public/icon.png",
-    "artifactName": "shencom_demo_mac.${ext}",
+    "artifactName": "demo_mac.${ext}",
     "target": ["dmg", "zip"]
   },
   "win": {
@@ -31,10 +31,10 @@
         "arch": ["x64", "ia32"]
       }
     ],
-    "artifactName": "shencom_demo.${ext}"
+    "artifactName": "demo.${ext}"
   },
   "nsis": {
-    "artifactName": "shencom_demo_Setup(beta).${ext}",
+    "artifactName": "demo_Setup(beta).${ext}",
     "oneClick": false,
     "perMachine": false,
     "allowToChangeInstallationDirectory": true,
@@ -42,7 +42,7 @@
   },
   "publish": {
     "provider": "generic",
-    "url": "https://scplugins.oss-cn-shenzhen.aliyuncs.com/plugins/test/scloud/electron/shencom-demo/",
+    "url": "",
     "channel": "latest"
   }
 }

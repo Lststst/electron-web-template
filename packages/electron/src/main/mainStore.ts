@@ -1,14 +1,8 @@
-import { app } from "electron";
-import * as fse from "fs-extra";
 import * as Store from "electron-store";
 
 let eStore: Store | null = null;
 
 const initAppStore = async () => {
-  // 是否第一次使用
-  const exists = await fse.pathExists(
-    `${app.getPath("userData")}/config.json`
-  );  
   eStore = new Store({
     defaults: {},
   });

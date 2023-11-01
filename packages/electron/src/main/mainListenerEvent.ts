@@ -1,5 +1,5 @@
 import { app, ipcMain } from "electron";
-import fse from "fs-extra";
+import * as fse from "fs-extra";
 import { join } from "node:path";
 import { getStore, setStore } from "./mainStore";
 import { isDev } from '../utils'

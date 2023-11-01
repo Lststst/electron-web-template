@@ -6,8 +6,6 @@ export const isDev = process.env.ELECTRON_MODE === "development";
 
 export const isPro = process.env.ELECTRON_MODE === "production";
 
-export const isTst = process.env.ELECTRON_MODE === "tst";
-
 // json数据对比新旧对比覆盖
 export function coverJson(originObj, newObj) {
   // 新增

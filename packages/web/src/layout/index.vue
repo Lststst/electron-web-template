@@ -4,7 +4,6 @@
 import { onMounted, KeepAlive } from "vue";
 import { RouterView } from "vue-router";
 import { useGlobal } from '@/hooks';
-import { compareVersions } from '../utils/index'
 import LayoutHeader from './layoutHeader/index.vue';
 
 const { $bridge, $utils } = useGlobal();

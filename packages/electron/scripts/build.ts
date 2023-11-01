@@ -5,10 +5,10 @@ import { builtinModules } from "node:module";
 import replace from "@rollup/plugin-replace";
 import pkg from "../package.json";
 import { spawn } from "node:child_process";
-import chokidar from "chokidar";
-import treeKill from "tree-kill";
+import * as chokidar from "chokidar";
+import * as treeKill from "tree-kill";
 
-type modeType = "development" | "tst" | "production";
+type modeType = "development" | "production";
 
 const isWin = process.platform === "win32";
 
@@ -119,44 +119,42 @@ const viteBuild = async (mode: modeType) => {
 const startElectron = () => {
   if (process.electronApp) {
     treeKill(Number(process.electronApp.pid), "SIGTERM", function (err) {
-      if(err){
-        console.log('treeKill: ', err)
+      if (err) {
+        console.log("treeKill: ", err);
       }else{
-        process.electronApp = spawn(
-          join(__dirname, `../node_modules/.bin/electron${isWin ? ".cmd" : null}`),
-          ["build/main.js"],
-          { stdio: "inherit" }
-        );
+        return ;
       }
     });
-  } else {
-    process.electronApp = spawn(
-      join(__dirname, `../node_modules/.bin/electron${isWin ? ".cmd" : null}`),
-      ["build/main.js"],
-      { stdio: "inherit" }
-    );
   }
+  process.electronApp = spawn(
+    join(__dirname, `../node_modules/.bin/electron${isWin ? ".cmd" : null}`),
+    ["build/main.js"],
+    { stdio: "inherit" }
+  );
+  // 监听子进程的退出事件
+  process.electronApp.on("exit", (code, signal) => {
+    process.exit();
+    console.log(
+      `Electron process exited with code ${code} and signal ${signal}`
+    );
+  });
 };
 
-if(process.argv.includes('-w')){
+if (process.argv.includes("-w")) {
   chokidar.watch(join(__dirname, "../src")).on(
     "all",
     debounce(
-      () => {
-        viteBuild('development');
+      async () => {
+        await viteBuild("development");
         startElectron();
       },
       2000,
       true
     )
   );
-}else{
-  const isTst = process.argv.includes('--tst');
-  const isPro = process.argv.includes('--production');
-  if(isTst){
-    viteBuild('tst');
-  }
-  if(isPro){
-    viteBuild('production');
+} else {
+  const isPro = process.argv.includes("--production");
+  if (isPro) {
+    viteBuild("production");
   }
 }

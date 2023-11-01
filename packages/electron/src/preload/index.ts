@@ -4,7 +4,6 @@ import base from "./base";
 import store from "./store";
 import settings from './settings';
 import exeUpdate from './exeUpdate';
-import hotUpdate from './hotUpdate';
 import projectFn from './projectFn';
 
 export type RennderListenerFnType = (
@@ -17,7 +16,6 @@ const bridge:any = {
   ...settings,
   ...store,
   ...exeUpdate,
-  ...hotUpdate,
   ...projectFn,  
 };
 

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useGlobal } from '@/hooks';
 import { RefreshRight, Minus, FullScreen, Close } from '@element-plus/icons-vue';
-import { usePageStore } from '@/stores'
+import { useUpdateStore } from '@/stores/update'
 
 const { $bridge, $utils } = useGlobal();
-const pageStore = usePageStore();
+const updateStore = useUpdateStore();
 
 const handleCloseApp= () => {
    if ($utils.IsElectron) {
@@ -38,15 +38,15 @@ const handleRelauch = () => {
     <div class="h-full flex-1">
     </div>
     <!-- 更新进度条 -->
-    <div v-if="pageStore.downloadProgress" class="h-full text-#fff text-[13px] flex-c mr-2 noDragArea">
-      <template v-if="pageStore.downloadProgress != 100">
-        <span>{{ pageStore.downloadProgress.toFixed(2) }}%</span>
+    <div v-if="updateStore.downloadProgress" class="h-full text-#fff text-[13px] flex-c mr-2 noDragArea">
+      <template v-if="updateStore.downloadProgress != 100">
+        <span>{{ updateStore.downloadProgress.toFixed(2) }}%</span>
       </template>
       <template v-else>
         <span @click="handleRelauch" class="cursor-pointer hover:underline">立即重启</span>
       </template>
       <div class="w-25 h-2 ml-2 relative">
-        <div class="h-full absolute left-0 top-0 bg-green rounded-2xl" :style="`width: ${pageStore.downloadProgress}%;`"></div>
+        <div class="h-full absolute left-0 top-0 bg-green rounded-2xl" :style="`width: ${updateStore.downloadProgress}%;`"></div>
       </div>
     </div>
     <!-- 右侧按钮 -->

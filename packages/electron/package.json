@@ -1,10 +1,9 @@
 {
-  "name": "shencom.xxx.electron",
+  "name": "xxx.electron",
   "version": "1.0.0",
   "hotVersion": "1.0.0",
   "main": "build/main.js",
   "description": "深传科技-xxx系统-electron",
-  "author": "shencom",
   "license": "MIT",
   "keywords": [
     "electron",
@@ -12,7 +11,6 @@
   ],
   "scripts": {
     "dev": "tsx ./scripts/build.ts -w",
-    "tst": "tsx ./scripts/build.ts --tst && electron-builder build",
     "build": "tsx ./scripts/build.ts --production && electron-builder build"
   },
   "devDependencies": {
@@ -27,7 +25,6 @@
     "electron": "^21.4.4"
   },
   "dependencies": {
-    "@shencom/utils": "^1.5.2",
     "axios": "^1.4.0",
     "dayjs": "^1.11.7",
     "electron-localshortcut": "^3.2.1",

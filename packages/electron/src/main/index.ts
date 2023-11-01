@@ -1,18 +1,18 @@
-import { app, BrowserWindow, globalShortcut, ipcMain } from "electron";
+import { app, BrowserWindow, globalShortcut } from "electron";
 import { join } from "node:path";
 import console from "electron-log";
-import fse from "fs-extra";
+import * as fse from "fs-extra";
 import mainSession from "./mainSession";
 import mainShortcut from "./mainShortcut";
 import mainListenerEvent from "./mainListenerEvent";
 import mainMenu from "./mainMenu";
-// import exeUpdate from "./exeUpdate";
-// import hotUpdate from "./hotUpdate";
+import mainExeUpdate from "./exeUpdate";
 import mainTray from "./tray";
 import { initAppStore } from "./mainStore";
 import { isDev } from "../utils";
 
-if(!isDev){
+// 日志输出
+if (!isDev) {
   console.transports.file.resolvePath = () =>
     join(process.cwd(), `logs/${app.getName()}.log`);
   // 确保目录为空。如果目录不为空，则删除目录内容。如果该目录不存在，则创建该目录。目录本身不会被删除。
@@ -28,12 +28,6 @@ process.on("uncaughtException", (error) => {
 });
 
 app.commandLine.appendSwitch("disable-web-security");
-// 应用单例锁
-// if (!app.requestSingleInstanceLock()) {
-//   console.info("Apply singleton lock, app quit...");
-//   app.quit();
-//   process.exit(0);
-// }
 
 let mainWindow: BrowserWindow | null = null;
 const createWindow = async () => {
@@ -55,10 +49,10 @@ const createWindow = async () => {
     },
   });
 
-  console.log(preload,'preload');
-  console.log(app.getAppPath(),'app.getAppPath()')
-  console.log(process.env?.webDevPort, 'process.env.webDevPort');
-  
+  console.log(preload, "preload");
+  console.log(app.getAppPath(), "app.getAppPath()");
+  console.log(process.env?.webDevPort, "process.env.webDevPort");
+
   if (isDev) {
     mainWindow.loadURL(url);
     mainWindow.webContents.openDevTools();
@@ -71,8 +65,7 @@ const createWindow = async () => {
   });
 };
 
-try{
-  
+try {
   // 创建应用及功能
   app
     .whenReady()
@@ -87,17 +80,15 @@ try{
       mainShortcut(mainWindow);
       // 自定义菜单
       mainMenu(mainWindow);
-      // 全量更新模块
-      // exeUpdate(mainWindow);
-      // 热更新模块
-      // hotUpdate(mainWindow);
+      // 更新模块
+      mainExeUpdate(mainWindow);
       // 主线程监听事件模块
       mainListenerEvent(mainWindow);
       // 托盘
       mainTray(mainWindow);
     });
-}catch(err){
-  console.error(err)
+} catch (err) {
+  console.error(err);
 }
 
 app.on("window-all-closed", () => {
@@ -106,9 +97,9 @@ app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });
 
+// 如果用户试图打开另一个窗口，则聚焦于主窗口
 app.on("second-instance", () => {
   if (mainWindow) {
-    // 如果用户试图打开另一个窗口，则聚焦于主窗口
     if (mainWindow.isMinimized()) mainWindow.restore();
     mainWindow.focus();
   }

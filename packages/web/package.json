@@ -1,15 +1,13 @@
 {
-  "name": "shencom.xxx.web",
+  "name": "xxx.web",
   "version": "1.0.0",
   "hotVersion": "1.0.0",
   "main": "build/index.js",
-  "description": "深传科技-xxx系统-web",
-  "author": "shencom",
+  "description": "xxx桌面系统-web",
   "license": "MIT",
   "keywords": ["vite","vue3"],
   "scripts": {
     "dev": "vite",
-    "tst": "vite build --mode tst",
     "build": "vite build --mode production"
   },
   "devDependencies": {
@@ -34,7 +32,6 @@
     "pinia": "^2.0.36",
     "element-plus": "^2.3.4",
     "@element-plus/icons-vue": "^2.1.0",
-    "@shencom/utils": "^1.5.2",
     "axios": "^1.4.0",
     "dayjs": "^1.11.7"
   }

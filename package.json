@@ -1,5 +1,10 @@
 {
-  "name": "electronProTemple",
+  "name": "electron-web-template",
+  "description": "electron、web前端便捷开发模板",
+  "author": {
+    "name": "Lststst",
+    "email": "824907892@qq.com"
+  },
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
